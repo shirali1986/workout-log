@@ -1,0 +1,192 @@
+/* ==========================================
+   1. GLOBALA VARIABLER OCH GRUNDINSTÄLLNINGAR
+   ================================---------- */
+
+/* :root används för att definiera "CSS-variabler" (anpassade egenskaper). 
+   Det gör att vi kan återanvända samma färger och typsnitt över hela filen. */
+:root {
+  --bg-color: #f0f4f8; /* Mjuk, ljusblå/grå bakgrund för hela sidan */
+  --panel-bg: #ffffff; /* Vit bakgrund för själva boxen (rent och fräscht) */
+  --text-primary: #334155; /* Mörkgrå/blå text som är lätt att läsa */
+  --text-muted: #64748b; /* Något ljusare text för mindre viktiga detaljer */
+  --accent-color: #4f46e5; /* Modern lila/blå accentfärg för knappar och rubriker */
+  --accent-hover: #4338ca; /* Mörkare nyans för när man hovrar över knappar */
+  --error-color: #ef4444; /* Tydlig röd färg för felmeddelanden */
+  --clear-btn-color: #dc2626; /* Röd färg för "Rensa"-knappen */
+  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Grundinställning för själva webbsidans kropp (body) */
+body {
+  font-family: var(--font-family); /* Sätter vårt valda typsnitt */
+  background-color: var(--bg-color); /* Sätter den ljusa bakgrunden */
+  color: var(--text-primary); /* Sätter standardfärg på texten */
+
+  /* Flexbox används för att centrera allt innehåll på skärmen (både vågrätt och lodrätt) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Tar upp hela skärmens höjd (100 Viewport Height) */
+  margin: 0; /* Tar bort webbläsarens standardmarginaler */
+}
+
+/* ==========================================
+   2. HUVUDCONTAINER (LJUS OCH MODERN)
+   ================================---------- */
+
+/* <main>-elementet som omsluter hela träningsloggen */
+main {
+  width: 90%; /* Tar 90% av bredden på mindre skärmar */
+  max-width: 600px; /* Men blir aldrig bredare än 600 pixlar */
+  background-color: var(--panel-bg); /* Vit och ren bakgrund */
+  padding: 35px; /* Skapar luft runt innehållet på insidan */
+  border-radius: 16px; /* Rundar av hörnen mjukt */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Lägger en mjuk, subtil skugga */
+}
+
+/* ==========================================
+   3. TYPOGRAFI (RUBRIKER)
+   ================================---------- */
+
+h1 {
+  text-align: center; /* Centrerar huvudrubriken */
+  color: var(--accent-color); /* Använder vår lila/blå accentfärg */
+  font-size: 1.8rem;
+  text-transform: uppercase; /* Gör om all text till VERSALER */
+  letter-spacing: 1px; /* Ökar avståndet mellan bokstäverna lite */
+  margin-bottom: 25px;
+}
+
+h2 {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  border-bottom: 2px solid #e2e8f0; /* Skapar en diskret linje under rubriken */
+  padding-bottom: 8px; /* Skapar luft mellan texten och linjen */
+  margin-top: 30px;
+}
+
+/* Grupperar sektionerna för att få ett snyggt avstånd emellan dem */
+section {
+  margin-bottom: 20px;
+}
+
+/* ==========================================
+   4. FORMULÄR OCH INMATNINGSFÄLT
+   ================================---------- */
+
+/* Gör så att texten ovanför fälten (labels) hamnar på en egen rad */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* Styling för både textfält och textrutor (inputs och textareas) */
+input[type="text"],
+textarea {
+  width: 100%; /* Fyller hela bredden av sin container */
+  padding: 12px; /* Skapar skrivutrymme på insidan */
+  margin-bottom: 15px; /* Avstånd ner till nästa element */
+  border: 1px solid #cbd5e1; /* Tydlig men mjuk grå ram */
+  border-radius: 8px; /* Rundade hörn */
+  background-color: #f8fafc; /* Mycket svagt ljusgrå bakgrund inuti fältet */
+  color: var(--text-primary); /* Färgen på texten man skriver in */
+  font-size: 1rem;
+  box-sizing: border-box; /* Gör så att padding räknas in i bredden */
+}
+
+/* Förändrar utseendet när man klickar i ett fält (får en fin ram) */
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background-color: #ffffff;
+}
+
+/* Förhindrar att textrutan för anteckningar dras i sidled, tillåter bara höjden */
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================
+   5. KNAPPAR (BUTTONS)
+   ================================---------- */
+
+/* Styling för "Add workout"-knappen (submit-knapp) */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  border: none; /* Tar bort standard-kantlinje */
+  border-radius: 8px;
+  background-color: var(--accent-color); /* Vacker lila/blå bakgrund */
+  color: #ffffff; /* Vit text för hög kontrast */
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer; /* Visarpekaren byts till en hand vid hovring */
+  transition: background-color 0.2s ease; /* Snabb mjuk övergång vid hovring */
+}
+
+/* Vad som händer när man för muspekaren över submit-knappen */
+button[type="submit"]:hover {
+  background-color: var(--accent-hover); /* Gör färgen snäppet mörkare */
+}
+
+/* Styling för "Clear all"-knappen */
+#clearBtn {
+  display: block;
+  margin-top: 20px;
+  margin-left: auto; /* Skjuter knappen helt åt höger */
+  padding: 8px 15px;
+  border: 1px solid #fecaca; /* Ljus röd ram */
+  border-radius: 6px;
+  background-color: #fef2f2; /* Mycket ljus röd bakgrund */
+  color: var(--clear-btn-color); /* Röd text */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#clearBtn:hover {
+  background-color: #fee2e2; /* Lite mörkare rött vid hovring */
+}
+
+/* ==========================================
+   6. LISTA OCH RESULTAT
+   ================================---------- */
+
+/* Tar bort listans standardpunkter (prickar till vänster) */
+#workoutList {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Styling för varje enskilt träningspass (listelement / li) som skapas i listan */
+#workoutList li {
+  padding: 12px 15px;
+  background-color: #f8fafc; /* Ljus bakgrundston för varje pass */
+  border: 1px solid #e2e8f0; /* Tunn ram runt varje pass */
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+/* Styling för texten som visar totala tiden */
+#total {
+  text-align: right; /* Flyttar texten till höger */
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  color: var(--accent-color);
+}
+
+/* ==========================================
+   7. FELMEDDELANDEN
+   ================================---------- */
+
+#error {
+  color: var(--error-color); /* Tydlig röd varningsfärg */
+  font-size: 0.9rem;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
